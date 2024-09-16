@@ -1,0 +1,47 @@
+image: node:16.13.2-alpine
+
+pipelines:
+ default:
+  - step:
+     caches:
+      - node
+     name: Build
+     script:
+      - yarn
+      - yarn lint
+      - yarn test
+ branches:
+  master:
+   - step:
+      caches:
+       - node
+      name: Build
+      script:
+       - yarn
+       - yarn lint
+       - yarn test
+       - yarn build
+      artifacts:
+       - node_modules/**
+       - .out/**
+       - build/**
+
+  release:
+   - step:
+      caches:
+       - node
+      name: Build
+      script:
+       - yarn
+       - yarn lint
+       - yarn test
+       - yarn build
+      artifacts:
+       - build/**
+   - step:
+      name: Publish to JFrog
+      script:
+       - apk --no-cache add curl
+       - curl -u${JFROG_USER}:${JFROG_TOKEN} https://cambridge.jfrog.io/artifactory/api/npm/auth > ~/.npmrc
+       - echo 'registry=https://cambridge.jfrog.io/artifactory/api/npm/npm-lib' >> ~/.npmrc
+       - npm publish build --verbose

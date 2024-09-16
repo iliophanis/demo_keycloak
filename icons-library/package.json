@@ -1,0 +1,67 @@
+{
+ "name": "@cambridgeassessment/ui-react-icons",
+ "version": "0.0.1",
+ "description": "Icons react library for cambridgeassessment",
+ "homepage": "",
+ "readmeFilename": "README.md",
+ "engines": {
+  "node": ">=16.13.2"
+ },
+ "main": "build/index.esm.js",
+ "types": "build/index.d.ts",
+ "files": [
+  "build"
+ ],
+ "scripts": {
+  "clean": "rm -rf src/icons/svgr && rm -rf build",
+  "svgr": "svgr --icon --replace-attr-values #323232=currentColor,#000=currentColor,#8723FF=currentColor,#BE8CFF=currentColor,#E6C84A=currentColor --title-prop --svg-props data-testid=svg-element --typescript -d src/icons assets",
+  "build": "rollup -c",
+  "generate": "yarn run clean && yarn run svgr",
+  "lint": "eslint --ext ts,tsx src",
+  "lint:fix": "eslint --max-warnings=0 --ext ts,tsx src --fix",
+  "storybook": "start-storybook -p 9099",
+  "build-storybook": "build-storybook",
+  "test:watch": "react-scripts test",
+  "test": "react-scripts test --coverage --watchAll=false"
+ },
+ "publishConfig": {
+  "registry": "https://cambridge.jfrog.io/artifactory/api/npm/npm-lib/"
+ },
+ "author": "Ilias-Theofanis Gravvanis",
+ "license": "MIT",
+ "devDependencies": {
+  "@babel/core": "^7.18.9",
+  "@rollup/plugin-babel": "^5.3.1",
+  "@rollup/plugin-node-resolve": "^13.3.0",
+  "@storybook/addon-actions": "^6.5.9",
+  "@storybook/addon-essentials": "^6.5.9",
+  "@storybook/addon-links": "^6.5.9",
+  "@storybook/react": "^6.5.9",
+  "@svgr/babel-plugin-remove-jsx-attribute": "^6.3.0",
+  "@svgr/cli": "^6.3.0",
+  "@svgr/rollup": "^6.3.0",
+  "@testing-library/jest-dom": "^5.16.4",
+  "@testing-library/react": "^13.3.0",
+  "@testing-library/user-event": "^14.3.0",
+  "@types/jest": "^28.1.6",
+  "@types/react": "^18.0.15",
+  "@typescript-eslint/eslint-plugin": "^5.30.7",
+  "@typescript-eslint/parser": "^5.30.7",
+  "babel-loader": "^8.2.5",
+  "eslint": "^8.20.0",
+  "eslint-plugin-react": "^7.30.1",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "rollup": "^2.77.0",
+  "rollup-plugin-filesize": "^9.1.2",
+  "rollup-plugin-peer-deps-external": "^2.2.4",
+  "rollup-plugin-typescript2": "^0.32.1",
+  "typescript": "^4.7.4"
+ },
+ "peerDependencies": {
+  "react": "^18.2.0"
+ },
+ "dependencies": {
+  "react-scripts": "^5.0.1"
+ }
+}
