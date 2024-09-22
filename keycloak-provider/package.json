@@ -1,0 +1,9 @@
+{
+  "name": "@compliance-commons-fe/keycloak-provider",
+  "version": "2.5.0-SNAPSHOT",
+  "dependencies": {
+    "@react-keycloak/web": "3.4.0",
+    "axios": "1.6.8",
+    "keycloak-js": "24.0.2"
+  }
+}

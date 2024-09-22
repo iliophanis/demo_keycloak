@@ -1,0 +1,42 @@
+{
+  "name": "keycloak-provider",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/keycloak-provider/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/keycloak-provider/**/*.{ts,tsx,js,jsx}",
+          "packages/keycloak-provider/package.json"
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/keycloak-provider",
+        "tsConfig": "packages/keycloak-provider/tsconfig.lib.json",
+        "project": "packages/keycloak-provider/package.json",
+        "entryFile": "packages/keycloak-provider/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "format": ["esm", "cjs"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "packages/keycloak-provider/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}
