@@ -1,20 +1,20 @@
-FROM node:18 as keycloakify_jar_builder
+FROM node:18 AS keycloakify_jar_builder
 
 RUN apt-get update && \
     apt-get install -y openjdk-17-jdk openjdk-17-jre && \
     apt-get install -y maven;
 
-COPY ./keycloakify-starter/package.json ./keycloakify-starter/yarn.lock /opt/app/
+COPY ./keycloakify-starter-2/package.json ./keycloakify-starter-2/yarn.lock /opt/app/
 
 WORKDIR /opt/app
 
 RUN yarn install --frozen-lockfile
 
-COPY ./keycloakify-starter/ /opt/app/
+COPY ./keycloakify-starter-2/ /opt/app/
 
 RUN yarn build-keycloak-theme
 
-FROM quay.io/keycloak/keycloak:latest as builder
+FROM quay.io/keycloak/keycloak:latest AS builder
 
 WORKDIR /opt/keycloak
 

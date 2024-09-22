@@ -1,11 +1,7 @@
 {
-    "name": "keycloakify-starter",
+    "name": "keycloak-template",
     "version": "0.0.0",
     "description": "Starter for Keycloakify 10",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/codegouvfr/keycloakify-starter.git"
-    },
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -17,8 +13,9 @@
     "license": "MIT",
     "keywords": [],
     "dependencies": {
-        "keycloakify": "^10.1.0",
+        "@ionic/react": "^8.3.0",
         "autoprefixer": "^10.4.19",
+        "keycloakify": "^10.1.0",
         "postcss": "^8.4.39",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
